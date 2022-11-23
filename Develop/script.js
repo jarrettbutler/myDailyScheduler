@@ -1,8 +1,7 @@
 var time = moment().hours();
-var textEl = $('.description')
-var saveBtn = $('.btn')
-var updateCLock = ''
-var i = 0
+var textEl = $('.description');
+var saveBtn = $('.btn');
+
 
 
 //Making the date and time appear while updating every second
@@ -23,4 +22,10 @@ for(i=0; i<textEl.length; i++){
         textEl[i].classList.add('past');
     }}
 
-    
+var save= function(){
+var value = $('.description').value
+console.log(value);
+localStorage.setItem('Value', value)
+}
+    //this is telling it on the click of the save button it will store wgatever is written locally
+    saveBtn.on('click', save);
