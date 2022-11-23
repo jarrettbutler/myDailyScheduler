@@ -1,8 +1,7 @@
+$(document).ready(function(){
 var time = moment().hours();
 var textEl = $('.description');
-var saveBtn = $('.btn');
-
-
+var saveBtns = $('.saveBtn');
 
 //Making the date and time appear while updating every second
 setInterval(function(){
@@ -20,12 +19,17 @@ for(i=0; i<textEl.length; i++){
         textEl[i].classList.add('future');
     } else {
         textEl[i].classList.add('past');
-    }}
-
-var save= function(){
-var value = $('.description').value
-console.log(value);
-localStorage.setItem('Value', value)
+    }
 }
-    //this is telling it on the click of the save button it will store wgatever is written locally
-    saveBtn.on('click', save);
+//Adds an event to the save button and saves the values to local storage
+    $('.saveBtn').on('click', function(){
+        var value = $(this).siblings('.description').val();
+        var key = $(this).siblings('.description').attr('id');
+        localStorage.setItem(key, value);
+    });
+    
+    //displays the local storage value
+    for(var num = 9; num <= 17; num++){
+        $("textarea#" + num).text(localStorage.getItem(num));
+    }
+});
