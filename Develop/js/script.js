@@ -28,7 +28,7 @@ for(i=0; i<textEl.length; i++){
         localStorage.setItem(key, value);
     });
     
-    //displays the local storage value
+//displays the local storage value
     for(var num = 9; num <= 17; num++){
         $("textarea#" + num).text(localStorage.getItem(num));
     }
